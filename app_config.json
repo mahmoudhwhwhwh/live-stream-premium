@@ -1,0 +1,17 @@
+{
+  "app_name": "LIVE STREAM PREMIUM",
+  "app_version": "v2.2.14",
+  "announcement": "تم نقل التحقق من الاشتراكات إلى خدمة خاصة لتحسين الأمان والاستقرار.",
+  "disable_vpn_check": false,
+  "disable_sniffer_check": false,
+  "blocking": {
+    "min_version_code": 214,
+    "blocked_version_codes": [125, 130, 140, 144, 205, 211, 212, 213],
+    "block_message": "تم إيقاف الإصدارات السابقة نهائياً لدواعي الأمان والاستقرار. يرجى تنزيل LIVE STREAM PREMIUM v2.2.14 للاستمرار."
+  },
+  "update": {
+    "latest_version": "v2.2.14",
+    "apk_url": "https://github.com/mahmoudhwhwhwh/live-stream-premium/releases/download/latest/LIVE_STREAM_PREMIUM.apk",
+    "update_message": "يتوفر الآن LIVE STREAM PREMIUM v2.2.14 مع تحقق اشتراك خاص وتحميل أسرع للقنوات."
+  }
+}
