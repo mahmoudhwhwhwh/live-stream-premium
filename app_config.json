@@ -78,25 +78,25 @@
     {
       "name": "Server 6",
       "host": "http://4kpro2.com",
-      "type": "stalker",
       "users": {
         "s6_code1": {
           "username": "00:1A:79:70:9D:14",
           "expiry_date": "2027-01-01T00:00:00Z",
           "devices": [
             "UKQ1.240624.001"
-          ]
+          ],
+          "password": "00:1A:79:70:9D:14"
         }
       }
     },
     {
       "name": "Server 7",
       "host": "http://line.tvdsz.cc",
-      "type": "stalker",
       "users": {
         "mahmoud20": {
           "username": "00:1A:79:B6:28:FE",
-          "expiry_date": "2027-01-01T00:00:00Z"
+          "expiry_date": "2027-01-01T00:00:00Z",
+          "password": "00:1A:79:B6:28:FE"
         }
       }
     },
