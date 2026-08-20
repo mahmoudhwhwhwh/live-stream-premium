@@ -1,0 +1,230 @@
+{
+  "app_name": "LIVE STREAM PREMIUM",
+  "app_version": "v2.2.35",
+  "blocking": {
+    "min_version_code": 200,
+    "block_message": "\u064a\u0631\u062c\u0649 \u0627\u0644\u062a\u062d\u062f\u064a\u062b \u0644\u0644\u0627\u0633\u062a\u0645\u0631\u0627\u0631."
+  },
+  "update": {
+    "latest_version": "v2.2.35",
+    "apk_url": "https://github.com/mahmoudhwhwhwh/flutter-iptv-player/releases/latest/download/app-release.apk"
+  },
+  "servers": [
+    {
+      "name": "Server 1",
+      "type": "xtream",
+      "host": "http://line.tvdsz.cc",
+      "users": [
+        {
+          "code": "mahmoud2027",
+          "username": "00:1A:79:B6:28:FE",
+          "password": ""
+        }
+      ]
+    },
+    {
+      "name": "Server 2",
+      "type": "xtream",
+      "host": "http://185.191.126.127:8080",
+      "users": [
+        {
+          "code": "02389",
+          "username": "b0:99:d7:15:88:50",
+          "password": ""
+        }
+      ]
+    },
+    {
+      "name": "Server 3",
+      "type": "xtream",
+      "host": "http://185.191.126.127:8080",
+      "users": [
+        {
+          "code": "s3_code1",
+          "username": "b0:99:d7:15:88:50",
+          "password": ""
+        }
+      ]
+    },
+    {
+      "name": "Server 4",
+      "type": "xtream",
+      "host": "http://line.tvdsz.cc",
+      "users": [
+        {
+          "code": "96827",
+          "username": "00:1A:79:B6:28:FE",
+          "password": ""
+        }
+      ]
+    },
+    {
+      "name": "Server 5",
+      "type": "stalker",
+      "host": "http://line.tvdsz.cc",
+      "users": [
+        {
+          "code": "s6_code1",
+          "username": "00:1A:79:B6:28:FE",
+          "password": ""
+        }
+      ]
+    },
+    {
+      "name": "JOKER 1",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker1",
+          "username": "joker1",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 2",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker2",
+          "username": "joker2",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 3",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker03",
+          "username": "joker3",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "mahmoud",
+      "type": "stalker",
+      "host": "http://185.191.126.127:8080",
+      "users": [
+        {
+          "code": "mahmoud209",
+          "username": "b0:99:d7:15:88:50",
+          "password": ""
+        }
+      ]
+    },
+    {
+      "name": "JOKER 4",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker4",
+          "username": "joker4",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 5",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker5",
+          "username": "joker5",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 6",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker6",
+          "username": "joker6",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 7",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker7",
+          "username": "joker7",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 8",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker8",
+          "username": "joker8",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 9",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker9",
+          "username": "joker9",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 10",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker10",
+          "username": "joker10",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 11",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker11",
+          "username": "joker11",
+          "password": "joker123"
+        }
+      ]
+    },
+    {
+      "name": "JOKER 12",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": [
+        {
+          "code": "joker12",
+          "username": "joker12",
+          "password": "joker123"
+        }
+      ]
+    }
+  ]
+}
