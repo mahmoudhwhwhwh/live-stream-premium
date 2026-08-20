@@ -2,7 +2,7 @@
   "app_name": "LIVE STREAM PREMIUM",
   "app_version": "v2.2.35",
   "blocking": {
-    "min_version_code": 200,
+    "min_version_code": 235,
     "block_message": "\ud83d\udea8 \u064a\u0631\u062c\u0649 \u0627\u0644\u062a\u062d\u062f\u064a\u062b \u0644\u0644\u0627\u0633\u062a\u0645\u0631\u0627\u0631."
   },
   "users": {},
