@@ -1,77 +1,208 @@
 {
+  "app_name": "LIVE STREAM PREMIUM",
+  "min_version_code": 200,
   "servers": [
     {
       "name": "Server 1",
-      "code": "mahmoud2027"
+      "type": "xtream",
+      "host": "http://line.tvdsz.cc",
+      "users": {
+        "mahmoud2027": {
+          "username": "00:1A:79:B6:28:FE",
+          "password": "",
+          "expiry_date": "2027-01-01"
+        }
+      }
     },
     {
       "name": "Server 2",
-      "code": "02389"
+      "type": "xtream",
+      "host": "http://185.191.126.127:8080",
+      "users": {
+        "02389": {
+          "username": "b0:99:d7:15:88:50",
+          "password": "",
+          "expiry_date": "\u0628\u0644\u0627 \u062d\u062f\u0648\u062f"
+        }
+      }
     },
     {
       "name": "Server 3",
-      "code": "s3_code1"
+      "type": "xtream",
+      "host": "http://185.191.126.127:8080",
+      "users": {
+        "s3_code1": {
+          "username": "b0:99:d7:15:88:50",
+          "password": "",
+          "expiry_date": "2027-01-01"
+        }
+      }
     },
     {
       "name": "Server 4",
-      "code": "96827"
+      "type": "xtream",
+      "host": "http://line.tvdsz.cc",
+      "users": {
+        "96827": {
+          "username": "00:1A:79:B6:28:FE",
+          "password": "",
+          "expiry_date": "\u0628\u0644\u0627 \u062d\u062f\u0648\u062f"
+        }
+      }
     },
     {
       "name": "Server 5",
-      "code": "s6_code1"
+      "type": "stalker",
+      "host": "http://line.tvdsz.cc",
+      "users": {
+        "s6_code1": {
+          "username": "00:1A:79:B6:28:FE",
+          "expiry_date": "2027-01-01"
+        }
+      }
     },
     {
       "name": "JOKER 1",
-      "code": "joker1"
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker1": {
+          "username": "joker1",
+          "password": "joker123"
+        }
+      }
     },
     {
       "name": "JOKER 2",
-      "code": "joker2"
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker2": {
+          "username": "joker2",
+          "password": "joker123"
+        }
+      }
     },
     {
       "name": "JOKER 3",
-      "code": "joker03"
-    },
-    {
-      "name": "JOKER 4",
-      "code": "joker4"
-    },
-    {
-      "name": "JOKER 5",
-      "code": "joker5"
-    },
-    {
-      "name": "JOKER 6",
-      "code": "joker6"
-    },
-    {
-      "name": "JOKER 7",
-      "code": "joker7"
-    },
-    {
-      "name": "JOKER 8",
-      "code": "joker8"
-    },
-    {
-      "name": "JOKER 9",
-      "code": "joker9"
-    },
-    {
-      "name": "JOKER 10",
-      "code": "joker10"
-    },
-    {
-      "name": "JOKER 11",
-      "code": "joker11"
-    },
-    {
-      "name": "JOKER 12",
-      "code": "joker12"
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker03": {
+          "username": "joker3",
+          "password": "joker123"
+        }
+      }
     },
     {
       "name": "mahmoud",
-      "code": "mahmoud209"
+      "type": "xtream",
+      "host": "http://185.191.126.127:8080",
+      "users": {
+        "mahmoud209": {
+          "username": "b0:99:d7:15:88:50",
+          "password": "3090914536649669"
+        }
+      }
+    },
+    {
+      "name": "JOKER 4",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker4": {
+          "username": "joker4",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 5",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker5": {
+          "username": "joker5",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 6",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker6": {
+          "username": "joker6",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 7",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker7": {
+          "username": "joker7",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 8",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker8": {
+          "username": "joker8",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 9",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker9": {
+          "username": "joker9",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 10",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker10": {
+          "username": "joker10",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 11",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker11": {
+          "username": "joker11",
+          "password": "joker123"
+        }
+      }
+    },
+    {
+      "name": "JOKER 12",
+      "type": "xtream",
+      "host": "http://joker-ps.link:8080",
+      "users": {
+        "joker12": {
+          "username": "joker12",
+          "password": "joker123"
+        }
+      }
     }
-  ],
-  "min_version_code": 200
+  ]
 }
