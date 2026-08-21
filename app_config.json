@@ -36,7 +36,7 @@
       "password": "joker123"
     }
   ],
-  "announcement": "مرحباً بكم! تم تفعيل نظام النسخ الاحتياطي لضمان عمل جميع الأكواد.",
+  "announcement": "نظام النسخ الاحتياطي نشط. جميع الأكواد تعمل الآن بامتياز.",
   "disable_vpn_check": true,
   "disable_sniffer_check": true
 }
