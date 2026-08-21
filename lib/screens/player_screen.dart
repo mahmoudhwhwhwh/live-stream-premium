@@ -378,13 +378,7 @@ class _PlayerScreenState extends State<PlayerScreen> with WidgetsBindingObserver
            if (res.statusCode == 200) {
               final data = json.decode(res.body);
               if (data['js'] != null && data['js']['cmd'] != null) {
-                  String cmd = data['js']['cmd'].toString().trim();
-                  for (final prefix in ["ffmpeg ", "ffrt ", "auto ", "ts ", "sh ", "m3u8 "]) {
-                    if (cmd.toLowerCase().startsWith(prefix)) {
-                      cmd = cmd.substring(prefix.length).trim();
-                    }
-                  }
-                  urlStr = cmd;
+                  urlStr = data['js']['cmd'].toString().replaceAll("ffmpeg ", "");
 
               }
            }
@@ -409,7 +403,7 @@ class _PlayerScreenState extends State<PlayerScreen> with WidgetsBindingObserver
       'Connection': 'keep-alive',
     };
     
-    if (_stream.type.startsWith("stalker") || urlStr.contains("mac=") || urlStr.contains("play/live.php")) {
+    if (_stream.type == "stalker" || urlStr.contains("mac=") || urlStr.contains("play/live.php")) {
       headers['User-Agent'] = 'Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3';
       try {
         if (urlStr.contains("mac=")) {

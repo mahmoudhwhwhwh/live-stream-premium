@@ -1,117 +1,127 @@
 package com.mahmoud.livestreampro
 
+import android.content.Context
+import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
-import java.io.File
-import java.net.NetworkInterface
-import java.util.*
 
 class MainActivity: FlutterActivity() {
-    private val CHANNEL = "com.mahmoud.iptv/security"
+    private val CHANNEL = "com.mahmoud.livestreampro/security"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // إعادة تفعيل حماية الشاشة السوداء لمنع التصوير والسرقة (أقوى حماية)
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+        // تم السماح بتصوير الشاشة وتسجيل الفيديو بناءً على طلب المستخدم في النسخة 2.2.36
+        // window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
-            if (call.method == "checkSecurity") {
-                val securityInfo = mutableMapOf<String, Any>()
-                
-                val isRooted = checkRootMethod1() || checkRootMethod2() || checkRootMethod3()
-                val isVpnActive = isVpnConnectionActive()
-                val isProxyActive = isProxyActive()
-                val isSnifferDetected = isSnifferAppInstalled() || isDebuggerAttached()
-
-                securityInfo["shouldBlock"] = isRooted || isSnifferDetected
-                securityInfo["vpnActive"] = isVpnActive
-                securityInfo["proxyActive"] = isProxyActive
-                securityInfo["isRooted"] = isRooted
-                securityInfo["snifferInstalled"] = isSnifferDetected
-                
-                result.success(securityInfo)
-            } else {
-                result.notImplemented()
+            when (call.method) {
+                "checkSecurity" -> {
+                    val snifferInstalled = hasSnifferApp()
+                    val vpnActive = isVpnActive()
+                    val proxyActive = isProxyActive()
+                    val shouldBlock = snifferInstalled || vpnActive || proxyActive
+                    
+                    result.success(mapOf(
+                        "shouldBlock" to shouldBlock,
+                        "snifferInstalled" to snifferInstalled,
+                        "vpnActive" to vpnActive,
+                        "proxyActive" to proxyActive
+                    ))
+                }
+                else -> {
+                    result.notImplemented()
+                }
             }
         }
     }
 
-    private fun checkRootMethod1(): Boolean {
-        val paths = arrayOf(
-            "/system/app/Superuser.apk", "/sbin/su", "/system/bin/su", "/system/xbin/su",
-            "/data/local/xbin/su", "/data/local/bin/su", "/system/sd/xbin/su",
-            "/system/bin/failsafe/su", "/data/local/su", "/su/bin/su"
+    private fun hasSnifferApp(): Boolean {
+        val pm = packageManager
+        val sniffers = listOf(
+            "com.guoshi.httpcanary",
+            "com.guoshi.httpcanary.premium",
+            "com.guoshi.httpcanary.pro",
+            "com.reqable.android",
+            "com.reqable.android.international",
+            "com.sandro.packetcapture",
+            "org.sandrop.packetcapture",
+            "com.minhui.networkcapture",
+            "com.evozi.networksniffer",
+            "tech.httptoolkit.android",
+            "tech.httptoolkit.android.v1",
+            "com.charlesproxy.android"
         )
-        for (path in paths) {
-            if (File(path).exists()) return true
+        
+        // 1. الفحص المباشر عبر أسماء الحزم المحددة
+        for (pkg in sniffers) {
+            try {
+                pm.getPackageInfo(pkg, PackageManager.GET_ACTIVITIES)
+                return true
+            } catch (e: PackageManager.NameNotFoundException) {
+                // Not found
+            }
         }
-        return false
-    }
-
-    private fun checkRootMethod2(): Boolean {
-        var process: Process? = null
-        return try {
-            process = Runtime.getRuntime().exec(arrayOf("/system/xbin/which", "su"))
-            val `in` = java.io.BufferedReader(java.io.InputStreamReader(process.inputStream))
-            `in`.readLine() != null
-        } catch (t: Throwable) {
-            false
-        } finally {
-            process?.destroy()
-        }
-    }
-
-    private fun checkRootMethod3(): Boolean {
-        val buildTags = android.os.Build.TAGS
-        return buildTags != null && buildTags.contains("test-keys")
-    }
-
-    private fun isVpnConnectionActive(): Boolean {
+        
+        // 2. فحص متقدم لكافة التطبيقات المثبتة بحثاً عن كلمات دلالية لبرامج الالتقاط
         try {
-            val interfaces = NetworkInterface.getNetworkInterfaces()
-            while (interfaces.hasMoreElements()) {
-                val networkInterface = interfaces.nextElement()
-                val name = networkInterface.name.lowercase(Locale.getDefault())
-                if (name.contains("tun") || name.contains("ppp") || name.contains("pptp") || 
-                    name.contains("l2tp") || name.contains("ipsec") || name.contains("vpn")) {
-                    return true
+            val keywords = listOf("reqable", "httpcanary", "packetcapture", "httptoolkit", "charlesproxy", "fiddler", "sniffer")
+            val packages = pm.getInstalledPackages(0)
+            for (info in packages) {
+                val pkgName = info.packageName.lowercase()
+                for (kw in keywords) {
+                    if (pkgName.contains(kw)) {
+                        return true
+                    }
                 }
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            // ignore
+        }
+        
+        return false
+    }
+
+    private fun isVpnActive(): Boolean {
+        try {
+            val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager ?: return false
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val activeNetwork = cm.activeNetwork ?: return false
+                val capabilities = cm.getNetworkCapabilities(activeNetwork) ?: return false
+                return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+            } else {
+                val networks = cm.allNetworks
+                for (network in networks) {
+                    val capabilities = cm.getNetworkCapabilities(network) ?: continue
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)) {
+                        return true
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            // ignore
         }
         return false
     }
 
     private fun isProxyActive(): Boolean {
-        val proxyAddress = System.getProperty("http.proxyHost")
-        val proxyPort = System.getProperty("http.proxyPort")
-        return !proxyAddress.isNullOrEmpty() && !proxyPort.isNullOrEmpty()
-    }
-
-    private fun isSnifferAppInstalled(): Boolean {
-        val snifferPackages = arrayOf(
-            "com.guoshi.httpcanary", "com.guoshi.httpcanary.premium",
-            "com.charles.proxy", "org.proxydroid", "com.minhui.networkcapture",
-            "com.evbadrit.networklog", "com.adguard.android", "com.reqable.android"
-        )
-        val pm = packageManager
-        for (pkg in snifferPackages) {
-            try {
-                pm.getPackageInfo(pkg, 0)
+        try {
+            val proxyAddress = System.getProperty("http.proxyHost")
+            val proxyPort = System.getProperty("http.proxyPort")
+            if (!proxyAddress.isNullOrEmpty() && !proxyPort.isNullOrEmpty()) {
                 return true
-            } catch (e: Exception) { }
+            }
+        } catch (e: Exception) {
+            // ignore
         }
         return false
-    }
-
-    private fun isDebuggerAttached(): Boolean {
-        return android.os.Debug.isDebuggerConnected()
     }
 }
